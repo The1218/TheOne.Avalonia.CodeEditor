@@ -1,0 +1,25 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--  Package-owned palette; no host or sibling repository resources are required.  -->
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Light">
+            <SolidColorBrush Color="#006061" x:Key="CodeEditor.Accent" />
+            <SolidColorBrush Color="#99000D" x:Key="CodeEditor.Danger" />
+            <SolidColorBrush Color="#D2D5D5" x:Key="CodeEditor.InputLine" />
+            <SolidColorBrush Color="#474D4D" x:Key="CodeEditor.Muted" />
+            <SolidColorBrush Color="#FFFFFF" x:Key="CodeEditor.Surface" />
+            <SolidColorBrush Color="#F2F2F2" x:Key="CodeEditor.SurfaceHover" />
+            <SolidColorBrush Color="#212222" x:Key="CodeEditor.Text" />
+            <SolidColorBrush Color="#6AE2E7" x:Key="CodeEditor.TextSelection" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Dark">
+            <SolidColorBrush Color="#63D9DE" x:Key="CodeEditor.Accent" />
+            <SolidColorBrush Color="#FFBDC2" x:Key="CodeEditor.Danger" />
+            <SolidColorBrush Color="#3D4242" x:Key="CodeEditor.InputLine" />
+            <SolidColorBrush Color="#CACECE" x:Key="CodeEditor.Muted" />
+            <SolidColorBrush Color="#0F0F0F" x:Key="CodeEditor.Surface" />
+            <SolidColorBrush Color="#212222" x:Key="CodeEditor.SurfaceHover" />
+            <SolidColorBrush Color="#F2F2F2" x:Key="CodeEditor.Text" />
+            <SolidColorBrush Color="#005557" x:Key="CodeEditor.TextSelection" />
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+</ResourceDictionary>

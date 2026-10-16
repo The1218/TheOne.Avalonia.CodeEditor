@@ -1,0 +1,222 @@
+<UserControl
+    x:Class="TheOne.DesignPreview.CodeEditorDemoView"
+    x:CompileBindings="True"
+    x:DataType="local:CodeEditorDemoViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:local="using:TheOne.DesignPreview"
+    xmlns:one="using:TheOne.Avalonia.Controls"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StackPanel Spacing="24">
+        <StackPanel Spacing="6">
+            <TextBlock
+                FontSize="13"
+                Foreground="{DynamicResource CodeEditor.Accent}"
+                Text="TheOne / COMPONENT DESIGN" />
+            <TextBlock
+                FontSize="28"
+                FontWeight="SemiBold"
+                Text="CodeEditor 代码编辑器" />
+            <TextBlock
+                Foreground="{DynamicResource CodeEditor.Muted}"
+                Text="自有轻量内核 · 成员与方法补全 · 参数提示 · 内置格式化与错误诊断"
+                TextWrapping="Wrap" />
+        </StackPanel>
+        <Grid
+            ColumnDefinitions="*,28,300"
+            RowDefinitions="Auto,Auto"
+            x:Name="MainLayout">
+            <StackPanel Spacing="10" x:Name="EditorSection">
+                <Grid ColumnDefinitions="*,Auto,Auto">
+                    <TextBlock
+                        FontWeight="SemiBold"
+                        Text="编辑器 / Live"
+                        VerticalAlignment="Center" />
+                    <Button
+                        Click="LoadLargeSample"
+                        Content="载入 10000 行"
+                        Grid.Column="1"
+                        Margin="0,0,8,0"
+                        x:Name="LoadLargeButton" />
+                    <Button
+                        Click="Complete"
+                        Content="补全"
+                        Grid.Column="2" />
+                </Grid>
+                <WrapPanel Orientation="Horizontal">
+                    <Button
+                        Click="LoadIntelligenceSample"
+                        Content="智能编辑示例"
+                        Margin="0,0,8,4" />
+                    <Button
+                        Click="LoadSnippetSample"
+                        Content="函数片段 · Tab Tab"
+                        Margin="0,0,8,4"
+                        x:Name="SnippetSampleButton" />
+                    <Button
+                        Click="ShowSignature"
+                        Content="参数提示"
+                        Margin="0,0,8,4" />
+                    <Button
+                        Click="CheckCode"
+                        Content="检查代码"
+                        Margin="0,0,0,4" />
+                </WrapPanel>
+                <one:CodeEditor
+                    AutomationProperties.Name="交互代码编辑器"
+                    CodeType="{Binding SelectedCodeType}"
+                    Header="settings.json"
+                    Height="540"
+                    IsReadOnly="{Binding IsReadOnly}"
+                    IsSyntaxHighlightingEnabled="{Binding EnableHighlighting}"
+                    ShowCopyButton="True"
+                    ShowFormatButton="True"
+                    ShowLineNumbers="{Binding ShowLineNumbers}"
+                    Text="{Binding Code, Mode=TwoWay}"
+                    WordWrap="{Binding WordWrap}"
+                    x:Name="Editor" />
+            </StackPanel>
+            <Border
+                BorderBrush="{DynamicResource CodeEditor.InputLine}"
+                BorderThickness="1,0,0,0"
+                Grid.Column="2"
+                Padding="20,0,0,0"
+                x:Name="PropertiesSection">
+                <StackPanel Spacing="18">
+                    <TextBlock FontWeight="SemiBold" Text="属性配置（演示）" />
+                    <StackPanel Spacing="5">
+                        <TextBlock Text="代码类型" />
+                        <TextBlock
+                            FontSize="12"
+                            Foreground="{DynamicResource CodeEditor.Muted}"
+                            Text="CodeType" />
+                        <ComboBox
+                            AutomationProperties.Name="代码类型"
+                            HorizontalAlignment="Stretch"
+                            ItemsSource="{Binding CodeTypes}"
+                            SelectedItem="{Binding SelectedCodeType, Mode=TwoWay}"
+                            x:Name="LanguagePicker" />
+                    </StackPanel>
+                    <Grid ColumnDefinitions="*,Auto">
+                        <StackPanel Spacing="3">
+                            <TextBlock Text="只读模式" />
+                            <TextBlock
+                                FontSize="12"
+                                Foreground="{DynamicResource CodeEditor.Muted}"
+                                Text="IsReadOnly" />
+                        </StackPanel>
+                        <ToggleSwitch
+                            AutomationProperties.Name="只读模式"
+                            Grid.Column="1"
+                            IsChecked="{Binding IsReadOnly, Mode=TwoWay}"
+                            OffContent=""
+                            OnContent=""
+                            x:Name="ReadOnlyToggle" />
+                    </Grid>
+                    <Grid ColumnDefinitions="*,Auto">
+                        <StackPanel Spacing="3">
+                            <TextBlock Text="显示行号" />
+                            <TextBlock
+                                FontSize="12"
+                                Foreground="{DynamicResource CodeEditor.Muted}"
+                                Text="ShowLineNumbers" />
+                        </StackPanel>
+                        <ToggleSwitch
+                            AutomationProperties.Name="显示行号"
+                            Grid.Column="1"
+                            IsChecked="{Binding ShowLineNumbers, Mode=TwoWay}"
+                            OffContent=""
+                            OnContent=""
+                            x:Name="LineNumbersToggle" />
+                    </Grid>
+                    <Grid ColumnDefinitions="*,Auto">
+                        <StackPanel Spacing="3">
+                            <TextBlock Text="语法高亮" />
+                            <TextBlock
+                                FontSize="11"
+                                Foreground="{DynamicResource CodeEditor.Muted}"
+                                Text="IsSyntaxHighlightingEnabled" />
+                        </StackPanel>
+                        <ToggleSwitch
+                            AutomationProperties.Name="语法高亮"
+                            Grid.Column="1"
+                            IsChecked="{Binding EnableHighlighting, Mode=TwoWay}"
+                            OffContent=""
+                            OnContent=""
+                            x:Name="HighlightToggle" />
+                    </Grid>
+                    <CheckBox
+                        Content="自动换行"
+                        IsChecked="{Binding WordWrap, Mode=TwoWay}"
+                        x:Name="WrapToggle" />
+                    <Border
+                        BorderBrush="{DynamicResource CodeEditor.InputLine}"
+                        BorderThickness="0,1,0,0"
+                        Padding="0,14,0,0">
+                        <StackPanel Spacing="10">
+                            <TextBlock FontWeight="SemiBold" Text="绑定示例" />
+                            <Border
+                                Background="{DynamicResource CodeEditor.SurfaceHover}"
+                                CornerRadius="4"
+                                Padding="10">
+                                <SelectableTextBlock
+                                    FontFamily="Cascadia Code,Consolas,Menlo,monospace"
+                                    FontSize="11"
+                                    Text="{Binding BindingExample}"
+                                    TextWrapping="Wrap" />
+                            </Border>
+                            <Button
+                                Click="LoadSample"
+                                Content="载入当前语言示例"
+                                HorizontalAlignment="Stretch" />
+                            <TextBlock
+                                FontSize="12"
+                                Foreground="{DynamicResource CodeEditor.Muted}"
+                                Text="切换语言只改变着色。载入示例会替换当前文本。属性面板仅用于演示。"
+                                TextWrapping="Wrap" />
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </Border>
+        </Grid>
+        <Grid
+            ColumnDefinitions="*,24,*"
+            RowDefinitions="Auto,Auto"
+            x:Name="SamplesLayout">
+            <StackPanel Spacing="10">
+                <TextBlock FontWeight="SemiBold" Text="只读态 / Dark" />
+                <ThemeVariantScope RequestedThemeVariant="Dark">
+                    <one:CodeEditor
+                        CodeType="Json"
+                        Header="settings.json"
+                        Height="230"
+                        IsCurrentLineHighlighted="False"
+                        IsReadOnly="True"
+                        Text="{x:Static local:CodeEditorDemoViewModel.DarkSample}"
+                        x:Name="DarkEditor" />
+                </ThemeVariantScope>
+            </StackPanel>
+            <StackPanel
+                Grid.Column="2"
+                Spacing="10"
+                x:Name="NoNumbersSection">
+                <TextBlock FontWeight="SemiBold" Text="隐藏行号 / Light" />
+                <ThemeVariantScope RequestedThemeVariant="Light">
+                    <one:CodeEditor
+                        CodeType="Json"
+                        Header="片段预览"
+                        Height="230"
+                        IsCurrentLineHighlighted="False"
+                        IsReadOnly="True"
+                        ShowLineNumbers="False"
+                        Text="{x:Static local:CodeEditorDemoViewModel.NoNumbersSample}"
+                        x:Name="NoNumbersEditor" />
+                </ThemeVariantScope>
+            </StackPanel>
+        </Grid>
+        <TextBlock
+            FontSize="12"
+            Foreground="{DynamicResource CodeEditor.Muted}"
+            Text="Ctrl/Cmd+F 查找 · Ctrl+Space 补全 · Tab Tab 展开片段 · Tab/Shift+Tab 切换字段 · Enter 接受 · Ctrl+Shift+Space 参数 · F8 定位错误 · Alt+Shift+F 格式化"
+            TextWrapping="Wrap" />
+    </StackPanel>
+</UserControl>

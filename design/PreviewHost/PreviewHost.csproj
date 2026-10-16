@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="../../PackageVersions.props"/>
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net10.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+        <IsAotCompatible>true</IsAotCompatible>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference Include="../../src/TheOne.Avalonia.CodeEditor/TheOne.Avalonia.CodeEditor.csproj" Condition="'$(UsePackageReferences)' != 'true'"/>
+        <PackageReference Include="TheOne.Avalonia.CodeEditor" Version="$(PackageVersion)" Condition="'$(UsePackageReferences)' == 'true'"/>
+        <PackageReference Include="Avalonia.Desktop" Version="12.1.4"/>
+        <PackageReference Include="Avalonia.Headless" Version="12.1.4"/>
+    </ItemGroup>
+</Project>

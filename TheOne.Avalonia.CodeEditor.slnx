@@ -1,0 +1,4 @@
+<Solution>
+    <Project Path="src/TheOne.Avalonia.CodeEditor/TheOne.Avalonia.CodeEditor.csproj"/>
+    <Project Path="design/PreviewHost/PreviewHost.csproj"/>
+</Solution>

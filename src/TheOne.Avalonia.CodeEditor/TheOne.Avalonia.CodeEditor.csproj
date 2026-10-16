@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="../../PackageVersions.props"/>
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+        <IsAotCompatible>true</IsAotCompatible>
+        <Version>$(TheOnePackageVersion)</Version>
+        <PackageVersion>$(TheOnePackageVersion)</PackageVersion>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <Description>Lightweight virtualized TheOne code editor with syntax highlighting, completion, formatting and native Avalonia input.</Description>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="12.1.4"/>
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="12.1.4"/>
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="../../LICENSE" Pack="true" PackagePath=""/>
+        <None Include="../../THIRD-PARTY-NOTICES.md" Pack="true" PackagePath=""/>
+        <None Update="README.md" Pack="true" PackagePath=""/>
+    </ItemGroup>
+</Project>

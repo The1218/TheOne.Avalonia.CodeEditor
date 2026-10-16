@@ -9,6 +9,13 @@
         <Version>$(TheOnePackageVersion)</Version>
         <PackageVersion>$(TheOnePackageVersion)</PackageVersion>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <PackageId>TheOne.Avalonia.CodeEditor</PackageId>
+        <Authors>The1218</Authors>
+        <PackageProjectUrl>https://github.com/The1218/TheOne.Avalonia.CodeEditor</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/The1218/TheOne.Avalonia.CodeEditor.git</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>Avalonia;CodeEditor;SyntaxHighlighting;Completion</PackageTags>
+        <PackageReleaseNotes>Standalone preview with incremental syntax scopes, nested interpolation, Markdown embedded highlighting, semantic colors and diagnostic range geometry. Known limitation: intermittent input/scroll performance long tails remain under investigation; single-file diagnostics do not replace a compiler.</PackageReleaseNotes>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <Description>Lightweight virtualized TheOne code editor with syntax highlighting, completion, formatting and native Avalonia input.</Description>

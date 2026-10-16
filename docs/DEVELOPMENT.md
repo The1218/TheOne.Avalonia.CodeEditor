@@ -46,4 +46,4 @@ dotnet .preview/work/artifacts/bin/PreviewHost/release/PreviewHost.dll --verify-
 
 真实 macOS arm64 NativeAOT：使用同一 Xcode 的 xcrun clang 和 SDK，publish PreviewHost，运行产物并附加 --require-aot。Windows / Linux 需在相应平台运行；不把跨 RID 产物检查写成平台运行通过。
 
-本仓库已 git init，但不预设远程地址、不创建初始提交、不推送、不发布。将来由用户提供远程地址和版本后独立配置仓库及 NuGet 发布。包版本与其他项目无联动。
+远程仓库为 https://github.com/The1218/TheOne.Avalonia.CodeEditor ，包版本由 PackageVersions.props 独立管理。提交、推送和 NuGet 发布需要用户授权；本地验证成功不等于已发布。发布流程见 PUBLISHING.md。
